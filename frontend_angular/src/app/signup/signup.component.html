@@ -1,0 +1,204 @@
+<!-- <form [formGroup]="signupForm">
+    <input placeholder="firstname" formControlName="firstname">
+    <span class="text-danger" *ngIf="signupForm.get('firstname').hasError('required') && signupForm.get('firstname').touched">Loan name required</span><br/>
+    <span class="text-danger" *ngIf="signupForm.get('firstname').hasError('pattern')">Firstname have numeric value</span><br/>
+    
+
+    <input placeholder="lastname" formControlName="lastname">
+    <span class="text-danger" *ngIf="signupForm.get('lastname').hasError('required') && signupForm.get('lastname').touched">lastname name required</span><br/>
+    <span class="text-danger" *ngIf="signupForm.get('lastname').hasError('pattern')">Lastname have numeric value</span><br/>
+
+    <input placeholder="address" formControlName="address1">
+    <span class="text-danger" *ngIf="signupForm.get('address1').hasError('required') && signupForm.get('address1').touched">address1 name required</span><br/>
+
+    <input placeholder="address (optional)" formControlName="address2"><br>
+
+    <input placeholder="state" formControlName="state">
+    <span class="text-danger" *ngIf="signupForm.get('state').hasError('required') && signupForm.get('state').touched">state name required</span><br/>
+
+    <input placeholder="city" formControlName="city">
+    <span class="text-danger" *ngIf="signupForm.get('city').hasError('required') && signupForm.get('city').touched">city name required</span><br/>
+
+
+    <input placeholder="email" formControlName="email">
+    <span class="text-danger" *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">email required</span><br/>
+    <span class="text-danger" *ngIf="signupForm.get('email').hasError('pattern')">pattern error</span><br/>
+
+    <input placeholder="number" formControlName="number">
+    <span class="text-danger" *ngIf="signupForm.get('number').hasError('required') && signupForm.get('number').touched">number required</span><br/>
+    <span class="text-danger" *ngIf="signupForm.get('number').hasError('pattern')">number pattern error</span><br/>
+
+    <input placeholder="password" formControlName="password">
+    <span class="text-danger" *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched">password required</span><br/>
+
+    <button (click)="Signup()" [disabled]='!signupForm.valid'>Signup</button>
+    <button (click)="resetForm()" >Reset Form</button>
+</form> -->
+
+
+
+ <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+              <form [formGroup]="signupForm">
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" 
+                      id="firstName"
+                      class="form-control form-control-lg"
+                      formControlName="firstname" />
+                      <label class="form-label" for="firstName">First Name</label>
+                     </div>
+  
+                    <div *ngIf="signupForm.get('firstname').hasError('required') && signupForm.get('firstname').touched ">
+                    First name is required *
+                    </div>
+                    <div *ngIf=" signupForm.get('firstname').hasError('pattern')">
+                    First name contains only alphabet
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" 
+                       class="form-control form-control-lg"
+                       formControlName="lastname" />
+                      <label class="form-label" for="lastName">Last Name</label>
+                    </div>
+                    <div *ngIf="signupForm.get('lastname').hasError('required') && signupForm.get('lastname').touched ">
+                        Last name is required *
+                        </div>
+                        <div *ngIf=" signupForm.get('lastname').hasError('pattern')">
+                        Last name contains only alphabet
+                        </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 ">
+  
+                    <div class="form-outline datepicker w-100">
+                      <input type="text" class="form-control form-control-lg" formControlName="add_line1"/>
+                      <label for="address1" class="form-label">Address1</label>
+                    </div>
+                    <div *ngIf="signupForm.get('add_line1').hasError('required') && signupForm.get('add_line1').touched ">
+                        Address is required *
+                        </div>
+                        
+                  </div>
+                 
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" 
+                       class="form-control form-control-lg"
+                       formControlName="add_line2" />
+                      <label class="form-label" for="address2">Address2(optional)</label>
+                    </div>
+            
+                  </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" 
+                        id="state"
+                        class="form-control form-control-lg"
+                        formControlName="state" />
+                        <label class="form-label" for="state">State</label>
+                       </div>
+    
+                      <div *ngIf="signupForm.get('state').hasError('required') && signupForm.get('state').touched ">
+                      state is required *
+                      </div>
+                      
+                    </div>
+  
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input type="text" 
+                         class="form-control form-control-lg"
+                         formControlName="city" />
+                        <label class="form-label" for="city">City</label>
+                      </div>
+                      <div *ngIf="signupForm.get('city').hasError('required') && signupForm.get('city').touched ">
+                          City is required *
+                          </div>
+                          
+                    </div>
+                  </div>
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 ">
+  
+                    <div class="form-outline">
+                      <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="email" />
+                      <label class="form-label" for="emailAddress">Email</label>
+                    </div>
+                    <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched ">
+                        Email is required *
+                        </div>
+                        <div *ngIf=" signupForm.get('email').hasError('pattern')">
+                        Invalid Email Pattern
+                        </div>
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <input type="tel" id="phoneNumber" class="form-control form-control-lg" formControlName="number"/>
+                      <label class="form-label" for="phoneNumber">Phone Number</label>
+                    </div>
+                    <div *ngIf="signupForm.get('number').hasError('required') && signupForm.get('number').touched ">
+                        number is required *
+                        </div>
+                        <div *ngIf=" signupForm.get('number').hasError('pattern')">
+                        Invalid number Pattern
+                        </div>
+                  </div>
+                </div>
+  
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4 ">
+    
+                      <div class="form-outline">
+                        <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="password" />
+                        <label class="form-label" for="passwordAddress">password</label>
+                      </div>
+                      <div *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched ">
+                          password is required *
+                          </div>
+                          <div *ngIf=" signupForm.get('password').hasError('pattern')">
+                          Invalid password Pattern
+                          </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                <div class="col-md-6 mb-4">
+                    <button class="btn btn-primary btn-lg" type="submit" value="Submit" (click)="Signup()" [disabled]='!signupForm.valid'>Signup</button>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <button (click)="resetForm()" class="btn btn-primary btn-lg">Reset Form</button>
+                </div>
+                
+            </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

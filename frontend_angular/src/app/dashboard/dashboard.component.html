@@ -1,0 +1,85 @@
+<!-- <button type="button" class="btn btn-danger" (click)="getName()">getName</button> -->
+<div align="right">
+<button  type="button" class="btn btn-primary" (click)="openPopup()">
+  Update Profile
+</button>
+&nbsp;
+  <button class="btn btn-danger" (click)="handleLogout()">Logout</button>
+</div>
+<p>welcome {{ loggedinUser.firstname + " " + loggedinUser.lastname
+}}</p>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <form #editForm="ngForm" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Form</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <input  name="firstname" required #firstname="ngModel" [minlength]="3" pattern='[a-zA-Z ]*' [(ngModel)]="userDetail.firstname" class="form-control">
+              <label class="form-label" for="firstName">First Name</label><br/>
+              <span *ngIf="firstname.invalid && firstname.touched">firstname required</span>
+              <div *ngIf="firstname.errors?.['pattern']">First name contains only letters</div>
+
+             </div>
+             <div class="col-md-6 mb-4">
+               <input  name="lastname" required #lastname="ngModel" pattern='[a-zA-Z ]*' [(ngModel)]="userDetail.lastname" class="form-control">
+               <label class="form-label" for="lastName">Last Name</label><br/>
+               <span *ngIf="lastname.invalid && lastname.touched">Lastname required</span>
+               <div *ngIf="lastname.errors?.['pattern']">Last name contains only letters</div>
+
+             </div>
+           </div>
+
+           <div class="row">
+            <div class="col-md-6 mb-4"> 
+          <input  name="add_line1" required #address1="ngModel" [(ngModel)]="userDetail.address.add_line1"  class="form-control">
+          <label class="form-label" for="address1">Address1</label><br/>
+          <span *ngIf="address1.invalid && address1.touched">Add_line1 required</span>
+
+        </div>
+        <div class="col-md-6 mb-4">
+          <input  name="state" required #state="ngModel" [(ngModel)]="userDetail.address.state" class="form-control">
+          <label class="form-label" for="state">State</label><br/>
+          <span *ngIf="state.invalid && state.touched">state required</span>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4"> 
+          <input  name="city" required #city="ngModel" [(ngModel)]="userDetail.address.city" class="form-control">
+          <label class="form-label" for="city">City</label><br/>
+          <span *ngIf="city.invalid && city.touched">city required</span>
+
+        </div>
+        <div class="col-md-6 mb-4">
+          <input  name="number" [(ngModel)]="userDetail.number" required #number="ngModel" pattern='[0-9]*$' [minlength]="10" [maxlength]="10"class="form-control">
+          <label class="form-label" for="number">Number</label><br/>
+          <span *ngIf="number.invalid && number.touched">number required</span>
+          <div *ngIf="number.errors?.['pattern']">Number contains only digit</div>
+          <div *ngIf="number.errors?.['minlength'] ">Number contains 10 only digit</div>
+
+        </div>
+      </div>
+      <input  name="email" [(ngModel)]="userDetail.email" required #email="ngModel" pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$" class="form-control" readonly>
+      <label class="form-label" for="email">Email</label>
+      <span *ngIf="email.invalid && email.touched">email required</span>
+          <div *ngIf="number.errors?.['pattern']">Invalid email</div>
+          
+        </div>
+        <div class="modal-footer">
+         
+          <button class="btn btn-success" (click)="customerEdit(editForm.value)" [disabled]='!editForm.valid'>Update</button>
+          <button type="button" class="btn btn-danger" (click)="closePopup()">
+            Close
+          </button>
+         
+        </div>
+      </div>
+    </div>
+  </form> 
+
+</div>
